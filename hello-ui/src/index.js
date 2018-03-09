@@ -53,25 +53,32 @@ const updateName = (name) => {
     });
 };
 
-const sayHello = (name) => {
-    const body = new URLSearchParams({ name });
-    fetch('/api/hello', { method: 'POST', body })
-        .then(response => response.text())
-        .then(hello => {
-            HelloDispatcher.dispatch({
-                type: ActionTypes.SET_MESSAGE,
-                payload: { hello }
-            });
-        })
+const sayHello = (key, name) => {
+    if (key === 'Enter') {
+        const body = new URLSearchParams({ name });
+        fetch('/api/hello', { method: 'POST', body })
+            .then(response => response.text())
+            .then(hello => {
+                HelloDispatcher.dispatch({
+                    type: ActionTypes.SET_MESSAGE,
+                    payload: { hello }
+                });
+            })
+    }
 };
 
 const App = ({ name, hello }) => (
     <div>
         <h1>{hello}</h1>
         <p>
-            <input type="text" value={name} onChange={event => updateName(event.target.value)} />
-            <button onClick={event => sayHello(name)}>Submit</button>
+            <input type="text" value={name}
+                onChange={event => updateName(event.target.value)}
+                onKeyPress={event => sayHello(event.key, name)} />
         </p>
+        <ol>
+            <li>Input your name.</li>
+            <li>Press enter key.</li>
+        </ol>
     </div>
 );
 
