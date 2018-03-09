@@ -54,7 +54,12 @@ const updateName = (name) => {
 };
 
 const sayHello = (name) => {
-    Promise.resolve(`Hello, ${name}!`)
+    const body = new URLSearchParams({ name });
+    fetch('http://localhost:8080/hello', {
+        method: 'POST',
+        body
+    })
+        .then(response => response.text())
         .then(hello => {
             HelloDispatcher.dispatch({
                 type: ActionTypes.SET_MESSAGE,
