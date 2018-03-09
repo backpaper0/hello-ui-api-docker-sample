@@ -55,10 +55,7 @@ const updateName = (name) => {
 
 const sayHello = (name) => {
     const body = new URLSearchParams({ name });
-    fetch('http://localhost:8080/hello', {
-        method: 'POST',
-        body
-    })
+    fetch('/api/hello', { method: 'POST', body })
         .then(response => response.text())
         .then(hello => {
             HelloDispatcher.dispatch({
