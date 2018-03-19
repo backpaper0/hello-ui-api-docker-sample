@@ -3,7 +3,7 @@
 ## Setup
 
 ```console
-git clone git@github.com:backpaper0/hello-ui-api-docker-sample.git
+git clone https://github.com/backpaper0/hello-ui-api-docker-sample.git
 cd hello-ui-api-docker-sample
 ```
 
