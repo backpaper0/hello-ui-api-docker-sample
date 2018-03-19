@@ -1,0 +1,13 @@
+version: '2.2'
+services:
+    hello-api:
+        image: team-cerezo/hello-api
+        container_name: hello-api
+    
+    hello-ui:
+        image: team-cerezo/hello-ui
+        container_name: hello-ui
+        ports:
+         - "3000:80"
+        links:
+         - hello-api
