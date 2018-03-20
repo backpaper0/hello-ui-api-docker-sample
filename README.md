@@ -30,7 +30,12 @@ Spring Boot DevToolsとwebpack dev serverを使うことでそれが可能にな
 
 ### hello-api
 
-IDEから`HelloApiApplication`を起動する。
+IDEから`HelloApiApplication`を起動するか、もしくは次のコマンドを実行する。
+
+```console
+cd hello-api
+mvnw spring-boot:run
+```
 
 ### hello-ui
 
