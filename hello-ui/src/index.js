@@ -12,7 +12,7 @@ const ActionTypes = {
 
 class HelloStoreClass extends ReduceStore {
     getInitialState() {
-        return 'Hello, world!';
+        return '';
     }
     reduce(state, { type, payload }) {
         switch (type) {
@@ -30,13 +30,16 @@ const HelloStore = new HelloStoreClass(HelloDispatcher);
 
 class NameStoreClass extends ReduceStore {
     getInitialState() {
-        return 'world';
+        return '';
     }
     reduce(state, { type, payload }) {
         switch (type) {
             case ActionTypes.UPDATE_NAME: {
                 const { name } = payload;
                 return name;
+            }
+            case ActionTypes.SET_MESSAGE: {
+                return '';
             }
             default:
                 return state;
@@ -67,6 +70,15 @@ const sayHello = (key, name) => {
     }
 };
 
+class Initializer extends React.Component {
+    componentDidMount() {
+        sayHello('Enter', 'world');
+    }
+    render() {
+        return <span />;
+    }
+}
+
 const App = ({ name, hello }) => (
     <div>
         <h1>{hello}</h1>
@@ -79,6 +91,7 @@ const App = ({ name, hello }) => (
             <li>Input your name.</li>
             <li>Press enter key.</li>
         </ol>
+        <Initializer />
     </div>
 );
 
