@@ -83,7 +83,7 @@ const App = ({ name, hello }) => (
     <div>
         <h1>{hello}</h1>
         <p>
-            <input type="text" value={name}
+            <input type="text" value={name} autoFocus
                 onChange={event => updateName(event.target.value)}
                 onKeyPress={event => sayHello(event.key, name)} />
         </p>
