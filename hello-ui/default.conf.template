@@ -11,7 +11,7 @@ server {
     }
 
     location /api/ {
-        proxy_pass   http://hello-api:8080/api/;
+        proxy_pass   ${HELLO_API_URL}/api/;
     }
 
     #error_page  404              /404.html;
